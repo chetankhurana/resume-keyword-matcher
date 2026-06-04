@@ -1,14 +1,22 @@
 import { JobDetails, ProjectIdea } from '../types';
 
-const DEFAULT_API_KEY = "AQ.Ab8RN6LC97b9fzdh4rLbZ8QJka_PwkUj_q-eVtj1NYZ9TL_usQ";
+// Read from Vite env (baked in at build time from the gitignored .env file).
+// This keeps the key out of source control while still allowing it to ship in the built extension.
+const BUILD_TIME_KEY: string = import.meta.env.VITE_GEMINI_API_KEY ?? '';
 
 export async function fetchAISuggestions(
   resumeText: string,
   jd: JobDetails,
   customApiKey?: string
 ): Promise<{ suggestions: string[]; projectIdeas: ProjectIdea[] }> {
-  // Use user-configured key, or fall back to the default provided key
-  const apiKey = customApiKey?.trim() || DEFAULT_API_KEY;
+  // Priority: user-configured key (from chrome.storage) → build-time env key
+  const apiKey = customApiKey?.trim() || BUILD_TIME_KEY;
+
+  if (!apiKey) {
+    throw new Error(
+      'No Gemini API key configured. Please add your key in the extension settings.'
+    );
+  }
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
   const prompt = `
