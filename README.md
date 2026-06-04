@@ -1,73 +1,93 @@
-# React + TypeScript + Vite
+# Resume Keyword Matcher Chrome Extension
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A powerful, privacy-focused Chrome extension that analyzes job postings and your resume for keyword and skill match, offering actionable Gemini AI-powered optimization tips for Applicant Tracking Systems (ATS).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
+- **Automatic job description detection**: Supports LinkedIn, Naukri.com, Indeed, Internshala, Greenhouse, Lever, and more job boards.
+- **ATS keyword/skill matching**: Instantly see which skills the job requires versus your resume.
+- **Gemini AI integration**: Tailored AI suggestions and project ideas to help your resume stand out. Supports your own Google Gemini API Key for maximum security.
+- **Side Panel UI**: Analyze jobs and compare resumes in an always-available Chrome side panel.
+- **Manual mode**: Paste any job description if a site isn't supported.
+- **Context menu support**: Right-click-to-analyze on supported job text anywhere.
+- **All processing is local**: Your resume and job data stay on your device.
 
-## React Compiler
+---
+## 🖼️ Screenshots
+<!-- TODO: Insert extension and side panel screenshots here after first load/build -->
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ⚡ Getting Started (For Developers)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. **Clone and Install**
+   ```sh
+   git clone [YOUR REPO URL]
+   cd chrome-extension
+   npm install
+   ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2. **Build the extension**
+   ```sh
+   npm run build
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+3. **Load in Chrome**
+   - Open `chrome://extensions/`
+   - Enable "Developer mode"
+   - Click "Load unpacked" and select the `dist` folder
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🧑‍💻 Usage (For End Users)
+- Browse to a job posting on a supported site.
+- Open the extension popup or click the side panel icon.
+- The extension auto-fetches the job details and scores your resume.
+- Paste your own job description if needed.
+- See tips, missing skills, and even AI-generated project ideas!
+- **Add your Gemini key for best AI results**: See below.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🔑 Gemini API Key Setup
+- In the side panel, go to **Settings** (gear icon)
+- Paste your Google Gemini API Key
+    - [How to create a Gemini API key](https://aistudio.google.com/app/apikey)
+- Your key is securely stored locally (never uploaded)
+- If no key, a built-in key is used (subject to Google's quotas/limits)
+
+---
+
+## ⚙️ Tech Stack
+- **Vite** – Fast, modern build tooling
+- **React + TypeScript** – UI, logic, type-safe codebase
+- **Chrome Extension v3 APIs** – Service worker, side panel
+- **Google Gemini API** – AI content (resume/ATS/project tips)
+
+---
+
+## 🏗️ Build & Develop
+- Develop locally with Vite HMR (`npm run dev`), then `npm run build` outputs to `/dist/`
+- Content scripts auto-injected on supported job boards, including after SPA/dynamic navigation
+
+---
+
+## 🔒 Security & Privacy Notice
+- All resume/job data is stored and processed locally on your machine
+- Gemini API key is only stored in browser storage and never shared externally except directly with Google APIs you invoke
+- You can use your own Gemini key for total control and privacy
+
+---
+
+## 📄 License & Contributing
+Feel free to fork this project or submit pull requests for new board support or features!
+
+---
+
+## 📫 Contact
+[Your Name/LinkedIn/GitHub/email here]
+
+---
+
+> Impress recruiters by linking this project in your portfolio or resume—showing modern Chrome extension skills, React/TypeScript competence, and real-world AI integration!
