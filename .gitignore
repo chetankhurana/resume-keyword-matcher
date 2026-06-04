@@ -3,22 +3,46 @@ logs
 *.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Dependency directories
+node_modules/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# Build outputs
+dist/
+dist-ssr/
+.vite/
+
+# OS / Editor trash
 .DS_Store
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+.vscode/*
+!.vscode/extensions.json
+
+# Environment & Secrets
+.env
+.env.*
+*.local
+*.key
+*.pem
+
+# Chrome extension upload/output
+*.crx
+*.zip
+
+# Optional: test snapshots or coverage
+coverage/
+*.lcov
+
+# Optional: VS Code/macOS system files
+Thumbs.db
+
+# Ignore npm package locks (optional)
+# package-lock.json
+yarn.lock
